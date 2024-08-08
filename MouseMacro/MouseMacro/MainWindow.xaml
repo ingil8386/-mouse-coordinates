@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseMacro"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="600" WindowStyle="SingleBorderWindow">
+        Title="MouseMacro" Height="350" Width="600" WindowStyle="SingleBorderWindow">
     <Window.InputBindings>
         <KeyBinding Key="F2" Command="{Binding StopMacroCommand}" />
     </Window.InputBindings>
