@@ -2,6 +2,8 @@
 *.cache
 *.lref
 *.baml
+*.suo
+
 
 # Ignore build directories
 bin/
