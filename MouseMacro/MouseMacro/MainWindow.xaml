@@ -5,44 +5,163 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseMacro"
         mc:Ignorable="d"
-        Title="MouseMacro" Height="350" Width="600" WindowStyle="SingleBorderWindow">
-    <Window.InputBindings>
-        <KeyBinding Key="F2" Command="{Binding StopMacroCommand}" />
-    </Window.InputBindings>
-    <Grid Background="PowderBlue">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
-        
-        
+        Title="MouseMacro" Height="450" Width="600" WindowStyle="SingleBorderWindow" Background="#F0F8FF">
 
-        <Grid Grid.Column="1">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label x:Name="RepeatCountLabel">반복 횟수 :</Label>
+    <Window.Resources>
 
-                <ListBox x:Name="CoordinatesListBox" Width="155" Height="180" />
+        <Style x:Key="DigimonButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF19B8D1"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="#FF346F78"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3"
+                                
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      RecognizesAccessKey="True"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-                <DockPanel Height="55"  Width="170">
-                    <Button x:Name="AddBtn"    Click="AddBtn_Click"    Margin="3" Width="50" Height="30">Insert</Button>
-                    <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Margin="3" Width="50" Height="30">Delete</Button>
-                    <Button x:Name="Clear"     Click="ClearBtn_Click"  Margin="3" Width="50" Height="30">Clear</Button>
-                </DockPanel>
-            </StackPanel>
-       
-        </Grid>
+
+
+        <Style x:Key="InsertStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF19B8D1"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="#FF346F78"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3"
+                        Padding="{TemplateBinding Padding}">
+                            <Grid>
+                                <!-- SVG path를 Path 요소로 변환하여 사용 -->
+                                <Path Data="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 24 13 L 24 24 L 13 24 L 13 26 L 24 26 L 24 37 L 26 37 L 26 26 L 37 26 L 37 24 L 26 24 L 26 13 L 24 13 z"
+                              Fill="White"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DeleteStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF19B8D1"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="#FF346F78"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3"
+                        Padding="{TemplateBinding Padding}">
+                            <Grid >
+                                <Path Data="M70.216,47H19.784c-1.104,0-2-0.896-2-2s0.896-2,2-2h50.432c1.104,0,2,0.896,2,2S71.32,47,70.216,47z M45,90C20.187,90,0,69.813,0,45C0,20.187,20.187,0,45,0c24.813,0,45,20.187,45,45C90,69.813,69.813,90,45,90z M45,4C22.393,4,4,22.393,4,45s18.393,41,41,41s41-18.393,41-41S67.607,4,45,4z"
+                                         Fill="White"
+                             
+                               Stretch="Uniform"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
 
 
-        <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="200" Margin="17,60,13,59" Width="120">
-            <Button x:Name="CoordinateBtn"  Width="100" Height="30" Margin="10" Click="CoordinateBtn_Click">좌표지정(Enter)</Button>
-            <Button x:Name="StartBtn" Width="100" Height="30" Margin="10" Click="StartBtn_Click">실행</Button>
-            <Button x:Name="StopBtn"  Width="100" Height="30" Margin="10" Click="StopBtn_Click" >중지(Alt + X)</Button>
-            <Button x:Name="ExitBtn"  Width="100" Height="30" Margin="10" Click="ExitBtn_Click">종료</Button>
+
+        <Style x:Key="DigimonLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="FontFamily" Value="Malgun Gothic"/>
+            <!-- 글꼴 설정 -->
+        </Style>
+
+
+        <!-- 디지몬 스타일 배경 -->
+        <Style x:Key="DigimonGridStyle" TargetType="Grid">
+            <Setter Property="Background" Value="#F0F8FF"/>
+            <!-- 밝은 파란색 배경 -->
+        </Style>
+    </Window.Resources>
+
+    <Grid Style="{StaticResource DigimonGridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 상단 레이블 -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <Label Content="MouseMacro" Style="{StaticResource DigimonLabelStyle}" FontSize="24"/>
         </StackPanel>
 
+        <!-- 중앙 컨텐츠 -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 좌표 리스트 및 버튼 -->
+            <Grid Grid.Column="0" Background="LightSteelBlue" HorizontalAlignment="Right" Width="390" >
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label x:Name="RepeatCountLabel" Content="반복 횟수 :" Style="{StaticResource DigimonLabelStyle}"/>
+                    <ListBox x:Name="CoordinatesListBox" Width="246" Height="180" Margin="0,10"/>
+
+                    <DockPanel  HorizontalAlignment="Center">
+                        <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}"/>
+                        <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="72" Width="69"/>
+                        <Button x:Name="Clear" Click="ClearBtn_Click" Style="{StaticResource DigimonButtonStyle}" Width="65" Content="Clear"/>
+                    </DockPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- 좌표 지정 및 제어 버튼 -->
+            <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                <Button x:Name="CoordinateBtn" Click="CoordinateBtn_Click" Style="{StaticResource DigimonButtonStyle}">좌표지정(Enter)</Button>
+                <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource DigimonButtonStyle}">실행</Button>
+                <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource DigimonButtonStyle}">중지(Alt + X)</Button>
+                <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource DigimonButtonStyle}">종료</Button>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 </Window>
