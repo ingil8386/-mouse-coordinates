@@ -1,0 +1,14 @@
+# Ignore WPF build artifacts
+*.cache
+*.lref
+*.baml
+*.suo
+
+
+# Ignore build directories
+bin/
+obj/
+
+
+# Ignore Visual Studio Solution User Options files
+*.suo
