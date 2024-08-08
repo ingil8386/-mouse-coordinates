@@ -16,7 +16,6 @@ C:\Users\JIG\source\repos\MouseMacro\MouseMacro\obj\Debug\MouseMacro.csproj.Asse
 C:\DSC\MouseMacro\MouseMacro\bin\Debug\MouseMacro.exe.config
 C:\DSC\MouseMacro\MouseMacro\bin\Debug\MouseMacro.exe
 C:\DSC\MouseMacro\MouseMacro\bin\Debug\MouseMacro.pdb
-C:\DSC\MouseMacro\MouseMacro\obj\Debug\MouseMacro.csproj.AssemblyReference.cache
 C:\DSC\MouseMacro\MouseMacro\obj\Debug\MainWindow.g.cs
 C:\DSC\MouseMacro\MouseMacro\obj\Debug\App.g.cs
 C:\DSC\MouseMacro\MouseMacro\obj\Debug\MouseMacro_MarkupCompile.cache
