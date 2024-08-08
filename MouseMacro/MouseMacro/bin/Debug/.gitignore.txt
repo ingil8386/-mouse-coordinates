@@ -5,4 +5,4 @@
 
 # Ignore build directories
 bin/
-
+obj/
