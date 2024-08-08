@@ -9,3 +9,7 @@
 bin/
 obj/
 MouseMarco/
+
+
+# Ignore Visual Studio Solution User Options files
+*.suo
