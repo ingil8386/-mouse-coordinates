@@ -1,0 +1,8 @@
+# Ignore WPF build artifacts
+*.cache
+*.lref
+*.baml
+
+# Ignore build directories
+bin/
+
