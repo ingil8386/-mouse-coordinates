@@ -1,0 +1,32 @@
+# 빌드 아티팩트
+bin/
+obj/
+
+# Visual Studio 관련 파일
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet 패키지
+packages/
+*.nupkg
+*.snupkg
+
+# Visual Studio 관련 폴더
+.vscode/
+*.vs/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# 로그 및 임시 파일
+*.log
+*.tmp
+*.swp
+
+# 환경 설정 파일
+.env
