@@ -30,3 +30,7 @@ Thumbs.db
 
 # 환경 설정 파일
 .env
+
+# 캐시 파일
+**/obj/*.cache
+**/obj/*.AssemblyReference.cache
