@@ -521,7 +521,10 @@ namespace MouseMacro
             storyboard.Children.Add(opacityAnimation);
         }
 
+        private void SetBtn_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 
 }

@@ -57,19 +57,19 @@
                  Visibility="Collapsed"
                  Opacity="0"/>
 
-            <!-- 왼쪽 반원 -->
+            <!-- 왼쪽 반원 --><!--
             <Path Name="LeftSemiCircle"
           Fill="White"
           Stroke="White"
           StrokeThickness="2"
           Visibility="Collapsed" />
 
-            <!-- 오른쪽 반원 -->
+            --><!-- 오른쪽 반원 --><!--
             <Path Name="RightSemiCircle"
           Fill="White"
           Stroke="White"
           StrokeThickness="2"
-          Visibility="Collapsed" />
+          Visibility="Collapsed" />-->
         </Canvas>
         
         <!-- 상단 레이블 -->
@@ -98,7 +98,7 @@
 
 
 
-            <ListBox x:Name="CoordinatesListBox" Height="174" />
+            <ListBox x:Name="CoordinatesListBox" Height="174" Width="227" />
             <DockPanel Grid.Column="0" Grid.Row="2">
                 <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}" Height="70" Width="70"/>
                 <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="70" Width="70"/>
@@ -113,7 +113,7 @@
             <Button x:Name="LoadBtn" Click="LoadBtn_Click" Style="{StaticResource LoadStyle}" Height="50" Content="불러오기" Width="55"/>
         </DockPanel>
         <DockPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" >
-
+            <Button x:Name="SetBtn" Click="SetBtn_Click" Style="{StaticResource SetStyle}" Content="환경설정" Width="55"/>
             <Button x:Name="HelpBtn" Click="HelpBtn_Click" Style="{StaticResource HelpStyle}" Content="도움말"/>
             <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource ExitStyle}" Content="종료"/>
 
