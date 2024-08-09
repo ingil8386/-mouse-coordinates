@@ -1,29 +1,27 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace MouseMacro
 {
-    /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
-    /// </summary>
-    /// 
-    /// 챌린지 들어가자마자 생기는 확인버튼        
-    /// 챌린지 결과버튼 두번클릭   다시 시작 최소 세번? 
-    // 1번 파티 클릭 - 스테미나/스트레스 재충전 용도
-    // 2번 파티 클릭 - 스테미나/스트레스 재충전 용도
-    // 3번 파티 클릭 - 스테미나/스트레스 재충전 용도
-    // 스테미나/스트레스 소모완료 > 경고 문구창 클릭
+
     public partial class MainWindow : Window
     {
-   
+        private DispatcherTimer _timer;
         private const int WM_HOTKEY = 0x0312;
         private const int HOTKEY_ID = 9000; // 핫키 식별자
 
@@ -36,7 +34,7 @@ namespace MouseMacro
         private List<POINT> points = new List<POINT>(); // 여러 좌표를 저장할 리스트
         private int currentStep = 0; // 현재 진행중인 단계
 
-
+        #region
         [DllImport("user32.dll")]
         public static extern bool GetCursorPos(out POINT lpPoint);
 
@@ -45,15 +43,14 @@ namespace MouseMacro
 
         [DllImport("user32.dll")]
         public static extern bool SetCursorPos(int X, int Y);
-
-
-
-
+     
         // Windows API 함수 선언
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
 
         [DllImport("user32.dll")]
+        #endregion
+
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
 
@@ -71,7 +68,18 @@ namespace MouseMacro
             this.Loaded += MainWindow_Loaded;
             this.Closed += MainWindow_Closed;
             RegisterGlobalHotKey();
+
+            MouseDown += new MouseButtonEventHandler(Window_MouseDown);
             // 커맨드 초기화
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // 마우스 왼쪽 버튼이 눌리면 창을 드래그합니다.
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
@@ -177,26 +185,6 @@ namespace MouseMacro
         }
 
 
-
-        private void CoordinateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var explain = MessageBox.Show("원하는 좌표에 마우스를 올려두고 Enter를 누르세요. \n \n 지금부터 키보드만을 사용하세요. \n 다음 창이 떠도 키보드 Enter로 진행합니다 ", "좌표 저장 확인", MessageBoxButton.OK, MessageBoxImage.Question);
-
-            // 사용자가 좌표를 저장할지 확인하는 대화상자 표시
-            var result = MessageBox.Show("마우스를 이동하지 마시고 키보드의 Enter를 누르세요. \n 현재 좌표를 저장하시겠습니까? \n", "좌표 저장 확인", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                // 현재 마우스 좌표를 리스트에 저장
-                POINT point;
-                GetCursorPos(out point);
-                points.Add(point);
-
-                // ListBox에 좌표를 추가하여 표시
-                CoordinatesListBox.Items.Add(point);
-            }
-        }
-
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
             // 매크로 실행 시작
@@ -299,8 +287,6 @@ namespace MouseMacro
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-           // var explain = MessageBox.Show("원하는 좌표에 마우스를 올려두고 Enter를 누르세요. \n \n 지금부터 키보드만을 사용하세요. \n 다음 창이 떠도 키보드 Enter로 진행합니다 ", "좌표 저장 확인", MessageBoxButton.OK, MessageBoxImage.Question);
-
             // 사용자가 좌표를 저장할지 확인하는 대화상자 표시
             var result = MessageBox.Show("마우스를 이동하지 마시고 키보드의 Enter를 누르세요. \n 해당좌표는 선택된 리스트 아래에 삽입됩니다 \n 현재 좌표를 저장하시겠습니까? \n", "좌표 저장 확인", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
@@ -343,5 +329,199 @@ namespace MouseMacro
                 points.Clear();
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(10); // 0.1초마다 업데이트
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // 마우스 전역 좌표 얻기
+            if (GetCursorPos(out POINT point))
+            {
+                // 라벨에 좌표 표시
+                PositionLabel.Content = $"X: {point.X}, Y: {point.Y}";
+            }
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SaveCoordinatesToFile();
+
+        }
+
+        private void SaveCoordinatesToFile()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                FileName = "coordinates.txt",
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    foreach (var point in points)
+                    {
+                        writer.WriteLine($"{point.X},{point.Y}"); // x, y 형식으로 저장
+                    }
+                }
+
+                MessageBox.Show("좌표가 저장되었습니다.", "저장 완료", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+
+        private void LoadBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoadCoordinatesFromFile();
+        }
+
+        private void LoadCoordinatesFromFile()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string filePath = openFileDialog.FileName;
+
+                if (File.Exists(filePath))
+                {
+                    CoordinatesListBox.Items.Clear();
+                    points.Clear(); // 기존 좌표 리스트 초기화
+                    using (StreamReader reader = new StreamReader(filePath))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            var coordinates = line.Split(',');
+                            if (coordinates.Length == 2)
+                            {
+                                if (int.TryParse(coordinates[0], out int x) && int.TryParse(coordinates[1], out int y))
+                                {
+                                    POINT point = new POINT { X = x, Y = y };
+                                    points.Add(point);
+                                    CoordinatesListBox.Items.Add(point); // POINT 구조체를 직접 추가
+                                }
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("좌표가 불러와졌습니다.", "불러오기 완료", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("파일을 찾을 수 없습니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void OnCanvasMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var position = e.GetPosition(MainCanvas);
+
+            // 원의 초기 크기와 위치 설정
+            InitializeEllipse(CenterEllipse, position, 20);
+            InitializeEllipse(RippleEllipse, position, 20);
+            InitializeEllipse(OuterEllipse, position, 20);
+
+            var storyboard = new Storyboard();
+
+            // 중앙 흰색 원 애니메이션
+            AddAnimation(storyboard, CenterEllipse, position, 0, 20, 0.3);
+
+            // 중간 크기의 원 애니메이션
+            AddAnimation(storyboard, RippleEllipse, position, 20, 30, 0.6);
+
+            // 가장 큰 원 애니메이션
+            AddAnimation(storyboard, OuterEllipse, position, 30, 40, 1);
+
+            // 애니메이션 실행
+            storyboard.Begin();
+
+            // 애니메이션 후에 원을 숨기기 위해 대기
+            storyboard.Completed += (s, a) =>
+            {
+                CenterEllipse.Visibility = Visibility.Collapsed;
+                RippleEllipse.Visibility = Visibility.Collapsed;
+                OuterEllipse.Visibility = Visibility.Collapsed;
+            };
+        }
+
+        private void InitializeEllipse(Ellipse ellipse, Point position, double initialSize)
+        {
+            ellipse.Width = initialSize;
+            ellipse.Height = initialSize;
+            ellipse.Visibility = Visibility.Visible;
+            UpdateEllipsePosition(ellipse, position);
+        }
+
+        private void UpdateEllipsePosition(Ellipse ellipse, Point position)
+        {
+            // 원의 중심이 클릭한 지점에 오도록 위치 조정
+            Canvas.SetLeft(ellipse, position.X - ellipse.Width / 2);
+            Canvas.SetTop(ellipse, position.Y - ellipse.Height / 2);
+        }
+
+        private void AddAnimation(Storyboard storyboard, Ellipse ellipse, Point position, double fromSize, double toSize, double duration)
+        {
+            var sizeAnimation = new DoubleAnimation
+            {
+                From = fromSize,
+                To = toSize,
+                Duration = new Duration(TimeSpan.FromSeconds(duration)),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            sizeAnimation.Changed += (s, e) => UpdateEllipsePosition(ellipse, position);
+
+            Storyboard.SetTarget(sizeAnimation, ellipse);
+            Storyboard.SetTargetProperty(sizeAnimation, new PropertyPath("(Ellipse.Width)"));
+            storyboard.Children.Add(sizeAnimation);
+
+            var heightAnimation = new DoubleAnimation
+            {
+                From = fromSize,
+                To = toSize,
+                Duration = new Duration(TimeSpan.FromSeconds(duration)),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            Storyboard.SetTarget(heightAnimation, ellipse);
+            Storyboard.SetTargetProperty(heightAnimation, new PropertyPath("(Ellipse.Height)"));
+            storyboard.Children.Add(heightAnimation);
+
+            var opacityAnimation = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(duration)),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+
+            Storyboard.SetTarget(opacityAnimation, ellipse);
+            Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath("(Ellipse.Opacity)"));
+            storyboard.Children.Add(opacityAnimation);
+        }
+
+
     }
+
 }

@@ -5,163 +5,124 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseMacro"
         mc:Ignorable="d"
-        Title="MouseMacro" Height="450" Width="600" WindowStyle="SingleBorderWindow" Background="#F0F8FF">
+        Title="MouseMacro" Height="500" Width="600" WindowStyle="None" Background="#F0F8FF" Loaded="Window_Loaded" >
 
     <Window.Resources>
-
-        <Style x:Key="DigimonButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="Padding" Value="8"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="3"
-                                
-                            Padding="{TemplateBinding Padding}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      RecognizesAccessKey="True"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
 
-
-        <Style x:Key="InsertStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Padding" Value="8"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="3"
-                        Padding="{TemplateBinding Padding}">
-                            <Grid>
-                                <!-- SVG path를 Path 요소로 변환하여 사용 -->
-                                <Path Data="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 24 13 L 24 24 L 13 24 L 13 26 L 24 26 L 24 37 L 26 37 L 26 26 L 37 26 L 37 24 L 26 24 L 26 13 L 24 13 z"
-                              Fill="White"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"/>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="DeleteStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Padding" Value="8"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="3"
-                        Padding="{TemplateBinding Padding}">
-                            <Grid >
-                                <Path Data="M70.216,47H19.784c-1.104,0-2-0.896-2-2s0.896-2,2-2h50.432c1.104,0,2,0.896,2,2S71.32,47,70.216,47z M45,90C20.187,90,0,69.813,0,45C0,20.187,20.187,0,45,0c24.813,0,45,20.187,45,45C90,69.813,69.813,90,45,90z M45,4C22.393,4,4,22.393,4,45s18.393,41,41,41s41-18.393,41-41S67.607,4,45,4z"
-                                         Fill="White"
-                             
-                               Stretch="Uniform"/>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-
-
-        <Style x:Key="DigimonLabelStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,10,0,10"/>
-            <Setter Property="FontFamily" Value="Malgun Gothic"/>
-            <!-- 글꼴 설정 -->
-        </Style>
-
-
-        <!-- 디지몬 스타일 배경 -->
-        <Style x:Key="DigimonGridStyle" TargetType="Grid">
-            <Setter Property="Background" Value="#F0F8FF"/>
-            <!-- 밝은 파란색 배경 -->
-        </Style>
     </Window.Resources>
 
+    
     <Grid Style="{StaticResource DigimonGridStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="349*"/>
+            <ColumnDefinition Width="243*"/>
+        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="316*"/>
+            <RowDefinition Height="41*"/>
         </Grid.RowDefinitions>
 
+
+        <Canvas Name="MainCanvas" Background="Black" MouseLeftButtonDown="OnCanvasMouseLeftButtonDown" Grid.RowSpan="4" Grid.ColumnSpan="2">
+            <!-- 중앙 흰색 원 -->
+            <Ellipse Name="CenterEllipse"
+                 Fill="White"
+                 Stroke="White"
+                 StrokeThickness="1"
+                 Visibility="Collapsed"
+                 Opacity="0"/>
+
+            <!-- 중간 크기의 원 -->
+            <Ellipse Name="RippleEllipse"
+                 Fill="Transparent"
+                 Stroke="White"
+                 StrokeThickness="1"
+                 Visibility="Collapsed"
+                 Opacity="1"/>
+
+            <!-- 가장 큰 원 -->
+            <Ellipse Name="OuterEllipse"
+                 Fill="Transparent"
+                 Stroke="White"
+                 StrokeThickness="1"
+                 Visibility="Collapsed"
+                 Opacity="0"/>
+
+            <!-- 왼쪽 반원 -->
+            <Path Name="LeftSemiCircle"
+          Fill="White"
+          Stroke="White"
+          StrokeThickness="2"
+          Visibility="Collapsed" />
+
+            <!-- 오른쪽 반원 -->
+            <Path Name="RightSemiCircle"
+          Fill="White"
+          Stroke="White"
+          StrokeThickness="2"
+          Visibility="Collapsed" />
+        </Canvas>
+        
         <!-- 상단 레이블 -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-            <Label Content="MouseMacro" Style="{StaticResource DigimonLabelStyle}" FontSize="24"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"  Width="152" >
+            <Label Content="Mo12useM1121122acro" Style="{StaticResource DigimonLabelStyle}" FontSize="12"/>
         </StackPanel>
 
         <!-- 중앙 컨텐츠 -->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
 
-            <!-- 좌표 리스트 및 버튼 -->
-            <Grid Grid.Column="0" Background="LightSteelBlue" HorizontalAlignment="Right" Width="390" >
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Label x:Name="RepeatCountLabel" Content="반복 횟수 :" Style="{StaticResource DigimonLabelStyle}"/>
-                    <ListBox x:Name="CoordinatesListBox" Width="246" Height="180" Margin="0,10"/>
 
-                    <DockPanel  HorizontalAlignment="Center">
-                        <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}"/>
-                        <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="72" Width="69"/>
-                        <Button x:Name="Clear" Click="ClearBtn_Click" Style="{StaticResource DigimonButtonStyle}" Width="65" Content="Clear"/>
-                    </DockPanel>
-                </StackPanel>
-            </Grid>
+        <DockPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="78" Width="147">
+            <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource StartStyle}" Content="실행"/>
+            <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource StopStyle}" Content="중지(Alt + X)"/>
 
-            <!-- 좌표 지정 및 제어 버튼 -->
-            <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
-                <Button x:Name="CoordinateBtn" Click="CoordinateBtn_Click" Style="{StaticResource DigimonButtonStyle}">좌표지정(Enter)</Button>
-                <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource DigimonButtonStyle}">실행</Button>
-                <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource DigimonButtonStyle}">중지(Alt + X)</Button>
-                <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource DigimonButtonStyle}">종료</Button>
-            </StackPanel>
-        </Grid>
+        </DockPanel>
+
+
+        <!-- 좌표 리스트 및 버튼 -->
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Row="2"  >
+
+            <DockPanel>
+                <Label x:Name="RepeatCountLabel" Content="반복 횟수 :" Style="{StaticResource DigimonLabelStyle}"/>
+                <Label x:Name="PositionLabel" Style="{StaticResource DigimonLabelStyle}"/>
+            </DockPanel>
+
+
+
+            <ListBox x:Name="CoordinatesListBox" Height="170" />
+            <DockPanel Grid.Column="0" Grid.Row="2">
+                <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}" Height="65" Width="65"/>
+                <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="65" Width="66"/>
+                <Button x:Name="Clear" Click="ClearBtn_Click" Style="{StaticResource ClearStyle}" Width="56" Content="Clear" Height="66"/>
+            </DockPanel>
+        </StackPanel>
+
+
+        <!-- 좌표 지정 및 제어 버튼 -->
+        <DockPanel  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Width="126" >
+            <Button x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource SaveStyle}" Height="51" Content="저장"/>
+            <Button x:Name="LoadBtn" Click="LoadBtn_Click" Style="{StaticResource LoadStyle}" Height="50" Content="불러오기" Width="55"/>
+        </DockPanel>
+        <DockPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" >
+
+            <Button x:Name="HelpBtn" Click="HelpBtn_Click" Style="{StaticResource HelpStyle}" Content="도움말"/>
+            <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource ExitStyle}" Content="종료"/>
+
+        </DockPanel>
+
+
+
+
 
     </Grid>
+
 </Window>
