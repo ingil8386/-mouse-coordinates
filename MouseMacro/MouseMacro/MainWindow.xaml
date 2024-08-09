@@ -17,7 +17,7 @@
 
     </Window.Resources>
 
-    
+
     <Grid Style="{StaticResource DigimonGridStyle}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="349*"/>
@@ -30,6 +30,7 @@
             <RowDefinition Height="316*"/>
             <RowDefinition Height="41*"/>
         </Grid.RowDefinitions>
+
 
 
         <Canvas Name="MainCanvas" Background="Black" MouseLeftButtonDown="OnCanvasMouseLeftButtonDown" Grid.RowSpan="4" Grid.ColumnSpan="2">
@@ -57,21 +58,25 @@
                  Visibility="Collapsed"
                  Opacity="0"/>
 
-            <!-- 왼쪽 반원 --><!--
+            <!-- 왼쪽 반원 -->
+            <!--
             <Path Name="LeftSemiCircle"
           Fill="White"
           Stroke="White"
           StrokeThickness="2"
           Visibility="Collapsed" />
 
-            --><!-- 오른쪽 반원 --><!--
+            -->
+            <!-- 오른쪽 반원 -->
+            <!--
             <Path Name="RightSemiCircle"
           Fill="White"
           Stroke="White"
           StrokeThickness="2"
           Visibility="Collapsed" />-->
+
         </Canvas>
-        
+
         <!-- 상단 레이블 -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"  Width="152" >
             <Label Content="미완성" Style="{StaticResource DigimonLabelStyle}" FontSize="18"/>
@@ -80,10 +85,9 @@
         <!-- 중앙 컨텐츠 -->
 
 
-        <DockPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="78" Width="147">
+        <DockPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="136" Width="255" Margin="48,126,-60,69">
             <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource StartStyle}" Content="실행"  Width="40" Height="40"/>
             <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource StopStyle}" Content="중지(Alt + X)"  Width="40" Height="40"/>
-
         </DockPanel>
 
 
@@ -114,6 +118,7 @@
         </DockPanel>
         <DockPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" >
             <Button x:Name="SetBtn" Click="SetBtn_Click" Style="{StaticResource SetStyle}" Content="환경설정" Width="55"/>
+
             <Button x:Name="HelpBtn" Click="HelpBtn_Click" Style="{StaticResource HelpStyle}" Content="도움말"/>
             <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource ExitStyle}" Content="종료"/>
 

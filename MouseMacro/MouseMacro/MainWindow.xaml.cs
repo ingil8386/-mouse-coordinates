@@ -348,9 +348,32 @@ namespace MouseMacro
             }
         }
 
+        private Help helpWindow;
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (helpWindow == null || !helpWindow.IsVisible)
+            {
+                // Get the current mouse position in screen coordinates
+                Point mousePosition = Mouse.GetPosition(Application.Current.MainWindow);
+                Point screenPosition = Application.Current.MainWindow.PointToScreen(mousePosition);
 
+                // Create a new Help window
+                helpWindow = new Help();
+
+                // Set the position of the Help window based on the mouse position
+                helpWindow.Left = screenPosition.X-200;
+                helpWindow.Top = screenPosition.Y;
+
+                // Attach event handler to reset helpWindow to null when closed
+                helpWindow.Closed += (s, args) => helpWindow = null;
+
+                // Show the Help window
+                helpWindow.Show();
+               }
+            else
+            {
+                helpWindow.Activate(); // 이미 열려 있는 경우 해당 창을 활성화
+            }
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -521,9 +544,37 @@ namespace MouseMacro
             storyboard.Children.Add(opacityAnimation);
         }
 
+
+        private Setting setWindow;
+
         private void SetBtn_Click(object sender, RoutedEventArgs e)
         {
+  
+            if (setWindow == null || !setWindow.IsVisible)
+            {
+                // Get the current mouse position in screen coordinates
+                Point mousePosition = Mouse.GetPosition(Application.Current.MainWindow);
+                Point screenPosition = Application.Current.MainWindow.PointToScreen(mousePosition);
 
+                // Create a new Help window
+                setWindow = new Setting();
+
+                // Set the position of the Help window based on the mouse position
+                setWindow.Left = screenPosition.X - 200;
+                setWindow.Top = screenPosition.Y;
+
+                // Attach event handler to reset helpWindow to null when closed
+                setWindow.Closed += (s, args) => setWindow = null;
+
+                // Show the Help window
+                setWindow.Show();
+            }
+            else
+            {
+                setWindow.Activate(); // 이미 열려 있는 경우 해당 창을 활성화
+            }
+
+         
         }
     }
 
