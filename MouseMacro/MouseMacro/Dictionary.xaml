@@ -309,7 +309,7 @@
 
         <Style x:Key="DigimonLabelStyle" TargetType="Label">
             <Setter Property="FontSize" Value="13"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,10,0,10"/>
             <Setter Property="FontFamily" Value="Malgun Gothic"/>
@@ -319,7 +319,7 @@
 
         <!-- 디지몬 스타일 배경 -->
         <Style x:Key="DigimonGridStyle" TargetType="Grid">
-            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
             <!-- 밝은 파란색 배경 -->
         </Style>
 

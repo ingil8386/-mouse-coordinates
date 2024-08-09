@@ -74,15 +74,15 @@
         
         <!-- 상단 레이블 -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"  Width="152" >
-            <Label Content="Mo12useM1121122acro" Style="{StaticResource DigimonLabelStyle}" FontSize="12"/>
+            <Label Content="미완성" Style="{StaticResource DigimonLabelStyle}" FontSize="18"/>
         </StackPanel>
 
         <!-- 중앙 컨텐츠 -->
 
 
         <DockPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="78" Width="147">
-            <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource StartStyle}" Content="실행"/>
-            <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource StopStyle}" Content="중지(Alt + X)"/>
+            <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource StartStyle}" Content="실행"  Width="40" Height="40"/>
+            <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource StopStyle}" Content="중지(Alt + X)"  Width="40" Height="40"/>
 
         </DockPanel>
 
@@ -98,11 +98,11 @@
 
 
 
-            <ListBox x:Name="CoordinatesListBox" Height="170" />
+            <ListBox x:Name="CoordinatesListBox" Height="174" />
             <DockPanel Grid.Column="0" Grid.Row="2">
-                <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}" Height="65" Width="65"/>
-                <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="65" Width="66"/>
-                <Button x:Name="Clear" Click="ClearBtn_Click" Style="{StaticResource ClearStyle}" Width="56" Content="Clear" Height="66"/>
+                <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}" Height="70" Width="70"/>
+                <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="70" Width="70"/>
+                <Button x:Name="Clear" Click="ClearBtn_Click" Style="{StaticResource ClearStyle}" Width="70" Content="Clear" Height="70"/>
             </DockPanel>
         </StackPanel>
 
