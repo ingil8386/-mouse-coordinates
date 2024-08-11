@@ -237,7 +237,7 @@ namespace MouseMacro
                 }
 
                 // 작업 사이의 대기 시간 (필요에 따라 조정)
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
             }
             currentStep = 0; // 중지될 때 초기화
             repeatCount = 0; // 반복 카운트도 초기화
