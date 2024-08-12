@@ -34,12 +34,12 @@
 
 
         <Style x:Key="InsertStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
+            <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
+            <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -55,6 +55,7 @@
                                 <!-- SVG path를 Path 요소로 변환하여 사용 -->
                                 <Path Data="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 24 13 L 24 24 L 13 24 L 13 26 L 24 26 L 24 37 L 26 37 L 26 26 L 37 26 L 37 24 L 26 24 L 26 13 L 24 13 z"
                               Fill="White"
+                              Stretch="Uniform"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"/>
                             </Grid>
@@ -65,12 +66,12 @@
         </Style>
 
         <Style x:Key="DeleteStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
+            <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
+            <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -85,7 +86,8 @@
                             <Grid >
                                 <Path Data="M70.216,47H19.784c-1.104,0-2-0.896-2-2s0.896-2,2-2h50.432c1.104,0,2,0.896,2,2S71.32,47,70.216,47z M45,90C20.187,90,0,69.813,0,45C0,20.187,20.187,0,45,0c24.813,0,45,20.187,45,45C90,69.813,69.813,90,45,90z M45,4C22.393,4,4,22.393,4,45s18.393,41,41,41s41-18.393,41-41S67.607,4,45,4z"
                                          Fill="White"
-                             
+                                  HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
                                Stretch="Uniform"/>
                             </Grid>
                         </Border>
@@ -95,12 +97,12 @@
         </Style>
 
         <Style x:Key="SaveStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Transparent"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -115,7 +117,8 @@
                             <Grid >
                                 <Path Data="M88,90H2c-1.104,0-2-0.896-2-2V2c0-1.104,0.896-2,2-2h65.795c0.53,0,1.039,0.211,1.414,0.586l20.205,20.206C89.789,21.167,90,21.675,90,22.206V88c0,1.104-0.896,2-2,2H88z M4,86h82V23.034L66.967,4H4V86z M71.841,90H18.159c-1.104,0-2-0.896-2-2V48.152c0-1.104,0.896-2,2-2h53.682c1.104,0,2,0.896,2,2V88C73.841,89.104,72.945,90,71.841,90z M20.159,86h49.682V50.152H20.159V86z M54.427,21.649H18.159c-1.104,0-2-0.896-2-2V2c0-1.104,0.896-2,2-2h36.268c1.104,0,2,0.896,2,2v17.649C56.427,20.754,55.531,21.649,54.427,21.649z M20.159,17.649h32.268V4H20.159V17.649z M62.706,60.304H27.293c-1.104,0-2-0.896-2-2s0.896-2,2-2h35.413c1.104,0,2,0.896,2,2S63.811,60.304,62.706,60.304z M62.706,70.076H27.293c-1.104,0-2-0.896-2-2s0.896-2,2-2h35.413c1.104,0,2,0.896,2,2S63.811,70.076,62.706,70.076z M62.706,79.849H27.293c-1.104,0-2-0.896-2-2s0.896-2,2-2h35.413c1.104,0,2,0.896,2,2S63.811,79.849,62.706,79.849z"
                                          Fill="White"
-                             
+                                  HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
                                Stretch="Uniform"/>
                             </Grid>
                         </Border>
@@ -125,12 +128,12 @@
         </Style>
 
         <Style x:Key="LoadStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
+        <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -155,12 +158,12 @@
         </Style>
 
         <Style x:Key="ClearStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF19B8D1"/>
+            <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="#FF346F78"/>
+            <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -184,12 +187,12 @@
         </Style>
 
         <Style x:Key="StartStyle" TargetType="Button">
-            <Setter Property="Background" Value="Green"/>
+            <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="DarkGreen"/>
+            <Setter Property="BorderBrush" Value="Lime"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -199,11 +202,11 @@
                         <Border Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2"
+                        CornerRadius="3"
                         Padding="{TemplateBinding Padding}">
-                            <Grid Margin="3,0,0,0" >
+                            <Grid Margin="6,5,5,5" >
                                 <Path Data="M 81.73 50.284 c 4.068 -2.349 4.068 -8.22 0 -10.569 L 48.051 20.271 L 14.372 0.827 c -4.068 -2.349 -9.153 0.587 -9.153 5.284 V 45 v 38.889 c 0 4.697 5.085 7.633 9.153 5.284 l 33.679 -19.444 L 81.73 50.284 z"
-                                         Fill="White"
+                                         Fill="Lime"
 
                                Stretch="Uniform"/>
                             </Grid>
@@ -214,12 +217,12 @@
         </Style>
 
         <Style x:Key="StopStyle" TargetType="Button">
-            <Setter Property="Background" Value="IndianRed"/>
+            <Setter Property="Background" Value="Black"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="BorderBrush" Value="DarkRed"/>
+            <Setter Property="BorderBrush" Value="red"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -229,12 +232,12 @@
                         <Border Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2"
+                        CornerRadius="3"
                         Padding="{TemplateBinding Padding}">
-                            <Grid Margin="0" >
+                            <Grid Margin="3">
                                 <Path Data="M 30.556 21.77 H 22.51 c -2.056 0 -3.722 1.666 -3.722 3.722 v 45.785 c 0 2.056 1.666 3.722 3.722 3.722 h 8.046 c 2.056 0 3.722 -1.666 3.722 -3.722 V 25.493 C 34.278 23.437 32.612 21.77 30.556 21.77 z M 60.719 21.77 h -8.046 c -2.056 0 -3.722 1.666 -3.722 3.722 v 45.785 c 0 2.056 1.666 3.722 3.722 3.722 h 8.046 c 2.056 0 3.722 -1.666 3.722 -3.722 V 25.493 C 64.442 23.437 62.775 21.77 60.719 21.77 z M 34.326 18 h -8.046 c -2.056 0 -3.722 1.666 -3.722 3.722 v 45.785 c 0 2.056 1.666 3.722 3.722 3.722 h 8.046 c 2.056 0 3.722 -1.666 3.722 -3.722 V 21.722 C 38.049 19.666 36.382 18 34.326 18 z M 64.49 18 h -8.046 c -2.056 0 -3.722 1.666 -3.722 3.722 v 45.785 c 0 2.056 1.666 3.722 3.722 3.722 h 8.046 c 2.056 0 3.722 -1.666 3.722 -3.722 V 21.722 C 68.212 19.666 66.545 18 64.49 18 z
 "
-                                         Fill="White"
+                                         Fill="red"
 
                                Stretch="Uniform"/>
                             </Grid>
@@ -333,11 +336,11 @@
         </Setter>
     </Style>
 
-    <Style x:Key="DigimonLabelStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="13"/>
+    <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="Margin" Value="10,2,10,2"/>
             <Setter Property="FontFamily" Value="Malgun Gothic"/>
             <!-- 글꼴 설정 -->
         </Style>
@@ -347,5 +350,58 @@
         <Setter Property="Background" Value="White"/>
     </Style>
 
+    <Style x:Key="CustomListBoxStyle" TargetType="ListBox">
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Margin" Value="2"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="BorderBrush" Value="White"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Margin="{TemplateBinding Margin}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  Content="{TemplateBinding Content}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- 애니메이션 정의 -->
+    <Storyboard x:Key="FadeInStoryboard">
+        <DoubleAnimation
+                Storyboard.TargetProperty="Opacity"
+                From="0.0"
+                To="1.0"
+                Duration="0:0:0.5" />
+    </Storyboard>
+
+    <Storyboard x:Key="FadeOutStoryboard">
+        <DoubleAnimation
+                Storyboard.TargetProperty="Opacity"
+                From="1.0"
+                To="0.0"
+                Duration="0:0:0.5" />
+    </Storyboard>
 
 </ResourceDictionary>

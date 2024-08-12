@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseMacro"
         mc:Ignorable="d"
-        Title="Setting" Height="450" Width="800">
-    <Grid>
+        Title="Setting" Height="400" Width="400">
+    <Grid Background="Black">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label x:Name="CurrentIntervalLabel" Content="설정되지 않음" Width="200" Height="30" Margin="10" />
-            <TextBox x:Name="TimeIntervalTextBox" Width="200" Height="30" Margin="10" />
-            <Button Content="시작" Width="100" Height="30" Click="Button_Click" />
+            <Label x:Name="CurrentIntervalLabel" Content="Current Interval : " Width="200" Height="30" Margin="10" Foreground="White" HorizontalAlignment="Left"/>
+            <DockPanel>
+                <Label x:Name="CurrentIntervalLabe1l" Content="Interval Change :" Margin="10,10,0,10" Foreground="White" />
+                <TextBox x:Name="TimeIntervalTextBox" Width="80" Height="23" Margin="0,10,0,10"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label x:Name="CurrentIntervalLabe2l" Content="m/s" Margin="0,10,10,10" Foreground="White" />
+            </DockPanel>
+
+            <Button Content="변경" FontSize="9" Width="55" Height="30" Click="Button_Click" Background="Black" Foreground="White" Margin="10" BorderBrush="Transparent"/>
         </StackPanel>
 
     </Grid>

@@ -42,7 +42,7 @@ namespace MouseMacro
 
         private void UpdateCurrentIntervalLabel()
         {
-            CurrentIntervalLabel.Content = CurrentIntervalLabel.Content = $"{mainWindow.Interval} 밀리초";
+            CurrentIntervalLabel.Content = CurrentIntervalLabel.Content = $"CurrentInterval : {mainWindow.Interval} ms";
 
         }
 

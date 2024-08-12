@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MouseMacro"
         mc:Ignorable="d"
-        Title="MouseMacro" Height="500" Width="600" WindowStyle="None" Background="#F0F8FF" Loaded="Window_Loaded" >
+        Title="MouseMacro" Height="600" Width="700" WindowStyle="None" Background="#F0F8FF" Loaded="Window_Loaded">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -32,6 +32,12 @@
         </Grid.RowDefinitions>
 
 
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3">
+            <Frame x:Name="HelpFrame"
+                NavigationUIVisibility="Hidden" Panel.ZIndex="10" >
+                <!-- Frame의 내용 -->
+            </Frame>
+        </Grid>
 
         <Canvas Name="MainCanvas" Background="Black" MouseLeftButtonDown="OnCanvasMouseLeftButtonDown" Grid.RowSpan="4" Grid.ColumnSpan="2">
             <!-- 중앙 흰색 원 -->
@@ -57,79 +63,52 @@
                  StrokeThickness="1"
                  Visibility="Collapsed"
                  Opacity="0"/>
-
-            <!-- 왼쪽 반원 -->
-            <!--
-            <Path Name="LeftSemiCircle"
-          Fill="White"
-          Stroke="White"
-          StrokeThickness="2"
-          Visibility="Collapsed" />
-
-            -->
-            <!-- 오른쪽 반원 -->
-            <!--
-            <Path Name="RightSemiCircle"
-          Fill="White"
-          Stroke="White"
-          StrokeThickness="2"
-          Visibility="Collapsed" />-->
-
         </Canvas>
 
         <!-- 상단 레이블 -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"  Width="152" >
-            <Label Content="미완성" Style="{StaticResource DigimonLabelStyle}" FontSize="18"/>
-        </StackPanel>
+
 
         <!-- 중앙 컨텐츠 -->
 
 
-        <DockPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="136" Width="255" Margin="48,126,-60,69">
-            <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource StartStyle}" Content="실행"  Width="40" Height="40"/>
-            <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource StopStyle}" Content="중지(Alt + X)"  Width="40" Height="40"/>
+
+
+
+        <DockPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Label x:Name="RepeatCountLabel" Content="Cycle : 0" Style="{StaticResource LabelStyle}"/>
+            <Label x:Name="IntervalLavel"  Content="{Binding Interval, StringFormat=Interval : {0} ms}" Style="{StaticResource LabelStyle}" ></Label>
+     
         </DockPanel>
-
-
         <!-- 좌표 리스트 및 버튼 -->
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Row="2"  >
-            <Label x:Name="IntervalLavel"  Content="{Binding Interval, StringFormat=Interval: {0} ms}" Style="{StaticResource DigimonLabelStyle}" ></Label>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"   Grid.Row="2"  >
+            <Label x:Name="PositionLabel" Style="{StaticResource LabelStyle}"/>
+            <ListBox x:Name="CoordinatesListBox" Height="264" Width="287" Style="{StaticResource CustomListBoxStyle}"/>
+          
+            <DockPanel HorizontalAlignment="Center">
+                <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}" Height="50" Width="50"/>
+                <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="50" Width="50"/>
+                <Button x:Name="Clear" Click="ClearBtn_Click" Style="{StaticResource ClearStyle}" Width="50" Content="Clear" Height="50"/>
+                <Button x:Name="StartBtn" Click="StartBtn_Click" Style="{StaticResource StartStyle}" Content="실행" Height="50" Width="50" />
+                <Button x:Name="StopBtn" Click="StopBtn_Click" Style="{StaticResource StopStyle}" Content="중지(Alt + X)"  Width="50" Height="50"/>
 
-            <DockPanel>
-                <Label x:Name="RepeatCountLabel" Content="반복 횟수 :" Style="{StaticResource DigimonLabelStyle}"/>
-                <Label x:Name="PositionLabel" Style="{StaticResource DigimonLabelStyle}"/>
-           
-            </DockPanel>
-
-
-
-            <ListBox x:Name="CoordinatesListBox" Height="174" Width="227" />
-            <DockPanel Grid.Column="0" Grid.Row="2">
-                <Button x:Name="AddBtn" Click="AddBtn_Click" Style="{StaticResource InsertStyle}" Height="70" Width="70"/>
-                <Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource DeleteStyle}" Height="70" Width="70"/>
-                <Button x:Name="Clear" Click="ClearBtn_Click" Style="{StaticResource ClearStyle}" Width="70" Content="Clear" Height="70"/>
             </DockPanel>
         </StackPanel>
 
 
         <!-- 좌표 지정 및 제어 버튼 -->
-        <DockPanel  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Width="126" >
-            <Button x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource SaveStyle}" Height="51" Content="저장"/>
-            <Button x:Name="LoadBtn" Click="LoadBtn_Click" Style="{StaticResource LoadStyle}" Height="50" Content="불러오기" Width="55"/>
+        <DockPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Background="SteelBlue">
+            <DockPanel  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" >
+                <Button x:Name="LoadBtn" Click="LoadBtn_Click" Style="{StaticResource LoadStyle}" Height="55" Content="불러오기" Width="52" Margin="20,0,0,0"/>
+                <Button x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource SaveStyle}" Height="50" Content="저장" Width="50"/>
+            </DockPanel>
+            <DockPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" >
+                <Button x:Name="SetBtn" Click="SetBtn_Click" Style="{StaticResource SetStyle}" Content="환경설정" Width="57" Height="57"/>
+                <Button x:Name="HelpBtn" Click="HelpBtn_Click" Style="{StaticResource HelpStyle}" Content="도움말"  Width="50" Height="50"/>
+                <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource ExitStyle}" Content="종료"  Width="55" Height="55"/>
+            </DockPanel>
         </DockPanel>
-        <DockPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" >
-            <Button x:Name="SetBtn" Click="SetBtn_Click" Style="{StaticResource SetStyle}" Content="환경설정" Width="55"/>
-
-            <Button x:Name="HelpBtn" Click="HelpBtn_Click" Style="{StaticResource HelpStyle}" Content="도움말"/>
-            <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource ExitStyle}" Content="종료"/>
-
-        </DockPanel>
-
-
-
 
 
     </Grid>
-
 </Window>

@@ -19,7 +19,6 @@ using System.Windows.Threading;
 
 namespace MouseMacro
 {
-
     public partial class MainWindow : Window
     {
         private DispatcherTimer _timer;
@@ -64,6 +63,7 @@ namespace MouseMacro
             public override string ToString() => $"X: {X}, Y: {Y}";
         }
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -73,14 +73,15 @@ namespace MouseMacro
             DataContext = this;
             PropertyChanged += window_PropertyChanged;
             // 초기 Interval 값으로 Label 업데이트
-            IntervalLavel.Content = $"Interval: {Interval} ms";
+            IntervalLavel.Content = $"Interval : {Interval} ms";
             MouseDown += new MouseButtonEventHandler(Window_MouseDown);
+
             // 커맨드 초기화
         }
 
         private void window_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            IntervalLavel.Content = IntervalLavel.Content = $"{Interval} 밀리초";
+            IntervalLavel.Content = IntervalLavel.Content = $"Interval : {Interval} ms";
         }
      
 
@@ -192,7 +193,7 @@ namespace MouseMacro
             this.Topmost = false;
 
             // 반복 카운트 초기화 (필요한 경우)
-            repeatCount = 0;
+            //repeatCount = 0;
         }
 
 
@@ -208,6 +209,7 @@ namespace MouseMacro
             isRunning = true;
             Thread thread = new Thread(RunMacro);
             thread.Start();
+
         }
 
         private void StopBtn_Click(object sender, RoutedEventArgs e)
@@ -251,7 +253,7 @@ namespace MouseMacro
                 Thread.Sleep(Interval); // Interval을 사용하여 대기 시간을 조정
             }
             currentStep = 0; // 중지될 때 초기화
-            repeatCount = 0; // 반복 카운트도 초기화
+            //repeatCount = 0; // 반복 카운트도 초기화
             UpdateRepeatCountLabel(); // 중지 후 Label 초기화
         }
 
@@ -260,7 +262,7 @@ namespace MouseMacro
             // Dispatcher를 사용하여 UI 스레드에서 Label을 업데이트
             Dispatcher.Invoke(() =>
             {
-                RepeatCountLabel.Content = $"반복 횟수: {repeatCount}"; // Label의 Content 속성 업데이트
+                RepeatCountLabel.Content = $"Cycle : {repeatCount}"; // Label의 Content 속성 업데이트
             });
         }
 
@@ -338,6 +340,9 @@ namespace MouseMacro
 
                 // 좌표 리스트를 비워서 데이터도 제거
                 points.Clear();
+                //반복 카운트 초기화 (필요한 경우)
+                repeatCount = 0;
+                UpdateRepeatCountLabel();
             }
         }
 
@@ -359,32 +364,17 @@ namespace MouseMacro
             }
         }
 
-        private Help helpWindow;
+ 
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (helpWindow == null || !helpWindow.IsVisible)
+            if (HelpFrame == null)
             {
-                // Get the current mouse position in screen coordinates
-                Point mousePosition = Mouse.GetPosition(Application.Current.MainWindow);
-                Point screenPosition = Application.Current.MainWindow.PointToScreen(mousePosition);
-
-                // Create a new Help window
-                helpWindow = new Help();
-
-                // Set the position of the Help window based on the mouse position
-                helpWindow.Left = screenPosition.X-200;
-                helpWindow.Top = screenPosition.Y;
-
-                // Attach event handler to reset helpWindow to null when closed
-                helpWindow.Closed += (s, args) => helpWindow = null;
-
-                // Show the Help window
-                helpWindow.Show();
-               }
-            else
-            {
-                helpWindow.Activate(); // 이미 열려 있는 경우 해당 창을 활성화
+                MessageBox.Show("HelpFrame is null");
+                return;
             }
+
+            HelpPage helpPage = new HelpPage();
+            HelpFrame.Navigate(helpPage);
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -557,7 +547,7 @@ namespace MouseMacro
 
 
         private Setting setWindow; 
-              private int _interval = 1000;
+        private int _interval = 1000;
         public int Interval
         {
             get => _interval;
@@ -579,6 +569,7 @@ namespace MouseMacro
 
         private void SetBtn_Click(object sender, RoutedEventArgs e)
         {
+
             if (setWindow == null || !setWindow.IsVisible)
             {
                 Point mousePosition = Mouse.GetPosition(Application.Current.MainWindow);
