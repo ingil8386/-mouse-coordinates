@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -34,6 +35,7 @@ namespace MouseMacro
         private List<POINT> points = new List<POINT>(); // 여러 좌표를 저장할 리스트
         private int currentStep = 0; // 현재 진행중인 단계
 
+    
         #region
         [DllImport("user32.dll")]
         public static extern bool GetCursorPos(out POINT lpPoint);
@@ -68,10 +70,19 @@ namespace MouseMacro
             this.Loaded += MainWindow_Loaded;
             this.Closed += MainWindow_Closed;
             RegisterGlobalHotKey();
-
+            DataContext = this;
+            PropertyChanged += window_PropertyChanged;
+            // 초기 Interval 값으로 Label 업데이트
+            IntervalLavel.Content = $"Interval: {Interval} ms";
             MouseDown += new MouseButtonEventHandler(Window_MouseDown);
             // 커맨드 초기화
         }
+
+        private void window_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            IntervalLavel.Content = IntervalLavel.Content = $"{Interval} 밀리초";
+        }
+     
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -237,7 +248,7 @@ namespace MouseMacro
                 }
 
                 // 작업 사이의 대기 시간 (필요에 따라 조정)
-                Thread.Sleep(1000);
+                Thread.Sleep(Interval); // Interval을 사용하여 대기 시간을 조정
             }
             currentStep = 0; // 중지될 때 초기화
             repeatCount = 0; // 반복 카운트도 초기화
@@ -545,36 +556,49 @@ namespace MouseMacro
         }
 
 
-        private Setting setWindow;
+        private Setting setWindow; 
+              private int _interval = 1000;
+        public int Interval
+        {
+            get => _interval;
+            set
+            {
+                if (_interval != value)
+                {
+                    _interval = value;
+                    OnPropertyChanged(nameof(Interval));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         private void SetBtn_Click(object sender, RoutedEventArgs e)
         {
-  
             if (setWindow == null || !setWindow.IsVisible)
             {
-                // Get the current mouse position in screen coordinates
                 Point mousePosition = Mouse.GetPosition(Application.Current.MainWindow);
                 Point screenPosition = Application.Current.MainWindow.PointToScreen(mousePosition);
 
-                // Create a new Help window
-                setWindow = new Setting();
+                setWindow = new Setting(Application.Current.MainWindow as MainWindow);
 
-                // Set the position of the Help window based on the mouse position
-                setWindow.Left = screenPosition.X - 200;
+                setWindow.Left = screenPosition.X - setWindow.Width / 2;
                 setWindow.Top = screenPosition.Y;
 
-                // Attach event handler to reset helpWindow to null when closed
                 setWindow.Closed += (s, args) => setWindow = null;
 
-                // Show the Help window
                 setWindow.Show();
             }
             else
             {
-                setWindow.Activate(); // 이미 열려 있는 경우 해당 창을 활성화
+                setWindow.Activate();
             }
 
-         
+
         }
     }
 

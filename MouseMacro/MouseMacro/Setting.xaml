@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Setting" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label x:Name="CurrentIntervalLabel" Content="설정되지 않음" Width="200" Height="30" Margin="10" />
+            <TextBox x:Name="TimeIntervalTextBox" Width="200" Height="30" Margin="10" />
+            <Button Content="시작" Width="100" Height="30" Click="Button_Click" />
+        </StackPanel>
+
     </Grid>
 </Window>
