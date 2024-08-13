@@ -6,16 +6,63 @@
         xmlns:local="clr-namespace:MouseMacro"
         mc:Ignorable="d"
         Title="Setting" Height="400" Width="400">
-    <Grid Background="Black">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label x:Name="CurrentIntervalLabel" Content="Current Interval : " Width="200" Height="30" Margin="10" Foreground="White" HorizontalAlignment="Left"/>
-            <DockPanel>
-                <Label x:Name="CurrentIntervalLabe1l" Content="Interval Change :" Margin="10,10,0,10" Foreground="White" />
-                <TextBox x:Name="TimeIntervalTextBox" Width="80" Height="23" Margin="0,10,0,10"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Label x:Name="CurrentIntervalLabe2l" Content="m/s" Margin="0,10,10,10" Foreground="White" />
-            </DockPanel>
 
-            <Button Content="변경" FontSize="9" Width="55" Height="30" Click="Button_Click" Background="Black" Foreground="White" Margin="10" BorderBrush="Transparent"/>
+    <Window.Resources>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="SteelBlue"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5" 
+                            Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Image Source="icon/1.png" Stretch="UniformToFill"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="160" >
+            <Label x:Name="CurrentIntervalLabel" Content="Current Interval : " Width="200" Height="30" Margin="10" Foreground="Black" HorizontalAlignment="Left"/>
+            <DockPanel>
+                <Label x:Name="CurrentIntervalLabe1l" Content="Interval Change :" Margin="10,10,0,10" Foreground="black" />
+                <TextBox x:Name="TimeIntervalTextBox"    Style="{StaticResource RoundedTextBoxStyle}" Width="80" Height="23" Margin="0,10,0,10"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Label x:Name="CurrentIntervalLabe2l" Content="m/s" Margin="0,10,10,10" Foreground="black" />
+            </DockPanel>
+            <StackPanel>
+                <Border Height="25">
+                   
+                </Border>
+            </StackPanel>
+            <Button Content="변경" FontSize="9" Width="56" Height="30" Click="Button_Click" 
+                Background="White" Foreground="SteelBlue" BorderBrush="SteelBlue"
+                BorderThickness="1">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5" 
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </StackPanel>
 
     </Grid>

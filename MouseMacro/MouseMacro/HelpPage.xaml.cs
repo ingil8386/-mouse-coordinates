@@ -45,21 +45,24 @@ namespace MouseMacro
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
 
-      
-            if (_mainWindow != null)
+            var storyboard = (Storyboard)this.Resources["FadeOutStoryboard"];
+            if (storyboard != null)
             {
-                var storyboard = (Storyboard)this.Resources["FadeOutStoryboard"];
-                // 페이지의 Opacity를 애니메이션의 대상로 설정합니다.
+                storyboard.Completed += (s, args) =>
+                {
+                    var mainWindow = Application.Current.MainWindow as MainWindow;
+                    if (mainWindow != null)
+                    {
+                        mainWindow.HelpFrame.Visibility = Visibility.Collapsed;
+                        mainWindow.MainPanel.Visibility = Visibility.Visible;
+                        mainWindow.HelpFrame.Navigate(null); // 페이지를 비웁니다.
+                        Panel.SetZIndex(mainWindow.MainCanvas, 25);  // ZIndex 값을 높게 설정 (100은 예시)
+                    }
+                };
                 Storyboard.SetTarget(storyboard, this);
                 storyboard.Begin();
-            }
 
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow != null)
-            {
-                mainWindow.HelpFrame.Visibility = Visibility.Collapsed;
-                mainWindow.MainPanel.Visibility = Visibility.Visible;
-                mainWindow.HelpFrame.Navigate(null); // 페이지를 비웁니다.
+          
             }
         }
     }

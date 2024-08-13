@@ -376,6 +376,9 @@ namespace MouseMacro
                 HelpFrame.Content = new HelpPage();
            
             }
+            // HelpFrame을 최상단으로 가져오기
+
+            Panel.SetZIndex(MainCanvas, 0);  // ZIndex 값을 높게 설정 (100은 예시)
         }
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -589,6 +592,11 @@ namespace MouseMacro
                 setWindow.Activate();
             }
 
+
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
 
         }
     }

@@ -1,6 +1,7 @@
 # 빌드 아티팩트
 bin/
 obj/
+MouseMacro/
 
 # Visual Studio 관련 파일
 *.suo

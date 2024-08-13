@@ -121,5 +121,23 @@
   <ItemGroup>
     <Resource Include="favicon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\gg.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\dimi.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\back.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\fafi.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon\sky.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
