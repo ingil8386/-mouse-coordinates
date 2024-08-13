@@ -367,14 +367,15 @@ namespace MouseMacro
  
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (HelpFrame == null)
+            MainPanel.Visibility = Visibility.Collapsed;
+            HelpFrame.Visibility = Visibility;
+            // 현재 프레임의 컨텐츠가 HelpPage인지 확인
+            if (!(HelpFrame.Content is HelpPage))
             {
-                MessageBox.Show("HelpFrame is null");
-                return;
+                // HelpPage가 아닌 경우에만 새 페이지를 로드
+                HelpFrame.Content = new HelpPage();
+           
             }
-
-            HelpPage helpPage = new HelpPage();
-            HelpFrame.Navigate(helpPage);
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)

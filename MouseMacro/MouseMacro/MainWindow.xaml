@@ -13,12 +13,10 @@
                 <ResourceDictionary Source="Dictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
-
     </Window.Resources>
 
 
-    <Grid Style="{StaticResource DigimonGridStyle}">
+    <Grid Style="{StaticResource DigimonGridStyle}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="349*"/>
             <ColumnDefinition Width="243*"/>
@@ -31,15 +29,7 @@
             <RowDefinition Height="41*"/>
         </Grid.RowDefinitions>
 
-
-        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3">
-            <Frame x:Name="HelpFrame"
-                NavigationUIVisibility="Hidden" Panel.ZIndex="10" >
-                <!-- Frame의 내용 -->
-            </Frame>
-        </Grid>
-
-        <Canvas Name="MainCanvas" Background="Black" MouseLeftButtonDown="OnCanvasMouseLeftButtonDown" Grid.RowSpan="4" Grid.ColumnSpan="2">
+        <Canvas Name="MainCanvas" Background="Transparent" MouseLeftButtonDown="OnCanvasMouseLeftButtonDown" Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="2" >
             <!-- 중앙 흰색 원 -->
             <Ellipse Name="CenterEllipse"
                  Fill="White"
@@ -49,7 +39,7 @@
                  Opacity="0"/>
 
             <!-- 중간 크기의 원 -->
-            <Ellipse Name="RippleEllipse"
+            <Ellipse Name="RippleEllipse" 
                  Fill="Transparent"
                  Stroke="White"
                  StrokeThickness="1"
@@ -64,6 +54,15 @@
                  Visibility="Collapsed"
                  Opacity="0"/>
         </Canvas>
+        
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3" Background="Black">
+            <Frame x:Name="HelpFrame" Background="Black"
+                NavigationUIVisibility="Hidden">
+                <!-- Frame의 내용 -->
+            </Frame>
+        </Grid>
+
+    
 
         <!-- 상단 레이블 -->
 
@@ -81,7 +80,7 @@
         </DockPanel>
         <!-- 좌표 리스트 및 버튼 -->
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"   Grid.Row="2"  >
+        <StackPanel x:Name="MainPanel" VerticalAlignment="Center" HorizontalAlignment="Center"   Grid.Row="2">
             <Label x:Name="PositionLabel" Style="{StaticResource LabelStyle}"/>
             <ListBox x:Name="CoordinatesListBox" Height="264" Width="287" Style="{StaticResource CustomListBoxStyle}"/>
           

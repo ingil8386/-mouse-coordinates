@@ -26,21 +26,26 @@ namespace MouseMacro
         public HelpPage()
         {
             InitializeComponent();
-            _mainWindow = mainWindow;
+           //_mainWindow = mainWindow;
             this.Loaded += HelpPage_Loaded;
         }
 
         private void HelpPage_Loaded(object sender, RoutedEventArgs e)
         {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+        
             // 애니메이션을 가져옵니다.
             var storyboard = (Storyboard)this.Resources["FadeInStoryboard"];
             // 페이지의 Opacity를 애니메이션의 대상로 설정합니다.
             Storyboard.SetTarget(storyboard, this);
             storyboard.Begin();
+           
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
+
+      
             if (_mainWindow != null)
             {
                 var storyboard = (Storyboard)this.Resources["FadeOutStoryboard"];
@@ -53,6 +58,7 @@ namespace MouseMacro
             if (mainWindow != null)
             {
                 mainWindow.HelpFrame.Visibility = Visibility.Collapsed;
+                mainWindow.MainPanel.Visibility = Visibility.Visible;
                 mainWindow.HelpFrame.Navigate(null); // 페이지를 비웁니다.
             }
         }
