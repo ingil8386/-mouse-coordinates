@@ -368,6 +368,7 @@ namespace MouseMacro
         private void HelpBtn_Click(object sender, RoutedEventArgs e)
         {
             MainPanel.Visibility = Visibility.Collapsed;
+            serve_panel.Visibility = Visibility.Collapsed;
             HelpFrame.Visibility = Visibility;
             // 현재 프레임의 컨텐츠가 HelpPage인지 확인
             if (!(HelpFrame.Content is HelpPage))

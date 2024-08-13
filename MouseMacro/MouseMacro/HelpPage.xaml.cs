@@ -55,6 +55,7 @@ namespace MouseMacro
                     {
                         mainWindow.HelpFrame.Visibility = Visibility.Collapsed;
                         mainWindow.MainPanel.Visibility = Visibility.Visible;
+                        mainWindow.serve_panel.Visibility = Visibility.Visible;
                         mainWindow.HelpFrame.Navigate(null); // 페이지를 비웁니다.
                         Panel.SetZIndex(mainWindow.MainCanvas, 25);  // ZIndex 값을 높게 설정 (100은 예시)
                     }

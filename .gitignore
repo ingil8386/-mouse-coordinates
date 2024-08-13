@@ -1,7 +1,7 @@
 # 빌드 아티팩트
 bin/
 obj/
-MouseMacro/
+
 
 # Visual Studio 관련 파일
 *.suo
@@ -35,6 +35,12 @@ Thumbs.db
 *.g.i.cs
 *.resources
 *.pdb
+.pdb
+.exe
+.g.resources
+.g.cs
+.g.i.cs
+.baml
 
 # 환경 설정 파일
 .env
