@@ -31,7 +31,7 @@ Thumbs.db
 *.baml
 *.pdb
 *.g.cs
-*g.i.cs
+*.g.i.cs
 *.resources
 *.pdb
 

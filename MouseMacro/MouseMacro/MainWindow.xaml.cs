@@ -377,7 +377,7 @@ namespace MouseMacro
            
             }
         }
-
+        //ignoretest
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             SaveCoordinatesToFile();
