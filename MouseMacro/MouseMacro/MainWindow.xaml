@@ -15,8 +15,7 @@
         </ResourceDictionary>
     </Window.Resources>
 
-
-    <Grid Style="{StaticResource DigimonGridStyle}" >
+    <Grid Style="{StaticResource GridStyle}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="349*"/>
             <ColumnDefinition Width="243*"/>

@@ -52,4 +52,3 @@ C:\DSC\MouseMacro\MouseMacro\obj\Debug\MouseMacro.csproj.GenerateResource.cache
 C:\DSC\MouseMacro\MouseMacro\obj\Debug\MouseMacro.csproj.CoreCompileInputs.cache
 C:\DSC\MouseMacro\MouseMacro\obj\Debug\MouseMacro.exe
 C:\DSC\MouseMacro\MouseMacro\obj\Debug\MouseMacro.pdb
-C:\DSC\MouseMacro\MouseMacro\obj\Debug\MouseMacro.csproj.AssemblyReference.cache

@@ -27,6 +27,13 @@ Thumbs.db
 *.log
 *.tmp
 *.swp
+*.exe
+*.baml
+*.pdb
+*.g.cs
+*g.i.cs
+*.resources
+*.pdb
 
 # 환경 설정 파일
 .env
