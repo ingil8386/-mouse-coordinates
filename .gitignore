@@ -48,3 +48,8 @@ Thumbs.db
 # 캐시 파일
 **/obj/*.cache
 **/obj/*.AssemblyReference.cache
+
+
+# 무시할 파일 확장자 추가
+*.pdb
+*.exe

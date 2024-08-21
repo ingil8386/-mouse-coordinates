@@ -21,7 +21,7 @@ namespace MouseMacro
     /// </summary>
     public partial class HelpPage : Page
     {
-        private MainWindow _mainWindow;
+        //private MainWindow _mainWindow;
 
         public HelpPage()
         {
