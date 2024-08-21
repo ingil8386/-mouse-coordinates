@@ -129,14 +129,6 @@
             </DockPanel>
             <DockPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" >
                 <Button x:Name="SetBtn" Click="SetBtn_Click" Style="{StaticResource SetStyle}" Content="환경설정" Width="57" Margin="0,8,5,10" RenderTransformOrigin="0.5,0.5">
-                    <Button.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform AngleY="-1.456"/>
-                            <RotateTransform/>
-                            <TranslateTransform Y="-0.725"/>
-                        </TransformGroup>
-                    </Button.RenderTransform>
                 </Button>
                 <Button x:Name="HelpBtn" Click="HelpBtn_Click" Style="{StaticResource HelpStyle}" Content="도움말"  Width="58" Margin="0,2,5,5" />
                 <Button x:Name="ExitBtn" Click="ExitBtn_Click" Style="{StaticResource ExitStyle}" Content="종료"  Width="55" Margin="0,10,5,13"/>
